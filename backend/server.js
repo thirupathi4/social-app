@@ -12,12 +12,11 @@ const app = express();
 const mongoUri = process.env.MONGO_URI;
 
 // ─── Middleware ──────────────────────────────────────────────────────────────
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
-    credentials: true,
-  })
-);
+// ✅ Fixed
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://social-app-1-mg0m.onrender.com'],
+  credentials: true
+}));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
